@@ -1,0 +1,7 @@
+Utiliser la commande : -f Database/docker-compose_db.yml up
+
+à partir de là, le docker sera bien créé et tournera.
+
+Dans docker desktop notamment on peut bien voir le docker run, et on peut manager simplement depuis là-bas. 
+Avec MySQL workbench, on peut accéder aux données en allant sur localhost et port 3306.
+On trouve ensuite bien notre table articles et nos articles stockés.

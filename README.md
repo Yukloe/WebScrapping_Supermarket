@@ -13,14 +13,11 @@ git branch -M main
 git push -uf origin main
 ```
 
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
 ## Sujet du projet
 # Objectif : Faire un « comparateur de prix »
 # Description :
-➢ Trouvez deux ou trois sites de votre choix vendant des articles similaires,
+➢ Trouvez deux ou trois sites de votre choix vendant des articles similaires : dans notre cas les supermarchés.
 ➢ Utilisez scrapy pour récupérer les informations pertinentes des articles (nom, prix, lien vers
 le site, …)
 ➢ Ces informations seront conservées dans une base de données (MySQL par exemple),
@@ -48,11 +45,12 @@ Let people know what your project can do specifically. Provide context and add a
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Authors of the project
+Arthur Conte
+Hugo Patry
+Jules Levasseur
 
-## License
-For open source projects, say how it is licensed.
 
 ## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+In progress.
