@@ -1,4 +1,4 @@
-Utiliser la commande : -f Database/docker-compose_db.yml up
+Utiliser la commande : docker compose -f Database/docker-compose_db.yml up
 
 à partir de là, le docker sera bien créé et tournera.
 

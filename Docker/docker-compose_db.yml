@@ -5,6 +5,6 @@ services:
     container_name: MySQL_Server
     build:
       context: .
-      dockerfile: dockerfile_db
+      dockerfile: Docker_db/dockerfile_db
     ports:
       - "3306:3306"
