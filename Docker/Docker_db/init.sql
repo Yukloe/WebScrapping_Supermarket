@@ -1,15 +1,37 @@
-CREATE DATABASE articles;
-use articles;
+CREATE DATABASE comparateur;
+USE comparateur;
 
-CREATE TABLE articles (
+CREATE TABLE supermarche (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255),
-    prix FLOAT,
+    domaine VARCHAR(255),
+    recherche  VARCHAR(255),
+    code VARCHAR(255),
+    espace VARCHAR(10)
+);
+
+CREATE TABLE liste_article (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255),
+    poids FLOAT
+);
+
+CREATE TABLE article (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_supermarche FOREIGN KEY,
+    id_liste FOREIGN KEY,
+    prixKg FLOAT,
+    prixUnit FLOAT,
     lien VARCHAR(255),
-    supermarche VARCHAR(10),
     photo VARCHAR(255)
 );
 
-INSERT INTO articles(nom, prix, lien, supermarche)
-VALUES("test", 69.3, "test", "leclerc");
 
+INSERT INTO supermarche(nom, domaine, recherche, espace)
+VALUES("intermarche", "https://www.intermarche.com/", "recherche/", "%20");
+
+INSERT INTO supermarche(nom, domaine, recherche, espace)
+VALUES("carrefour", "https://www.carrefour.fr/", "s?q=", "+");
+
+INSERT INTO supermarche(nom, domaine, recherche, code, espace)
+VALUES("auchan", "https://www.auchan.fr/", "recherche?text=", "ca-n0701", "+");
