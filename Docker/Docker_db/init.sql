@@ -18,8 +18,8 @@ CREATE TABLE liste_article (
 
 CREATE TABLE article (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_supermarche FOREIGN KEY,
-    id_liste FOREIGN KEY,
+    FOREIGN KEY (id_supermarche) REFERENCES supermarche(id),
+    FOREIGN KEY (id_liste) REFERENCES liste_article(id),
     prixKg FLOAT,
     prixUnit FLOAT,
     lien VARCHAR(255),
@@ -27,11 +27,11 @@ CREATE TABLE article (
 );
 
 
-INSERT INTO supermarche(nom, domaine, recherche, espace)
+INSERT INTO comparateur.supermarche(nom, domaine, recherche, espace)
 VALUES("intermarche", "https://www.intermarche.com/", "recherche/", "%20");
 
-INSERT INTO supermarche(nom, domaine, recherche, espace)
+INSERT INTO comparateur.supermarche(nom, domaine, recherche, espace)
 VALUES("carrefour", "https://www.carrefour.fr/", "s?q=", "+");
 
-INSERT INTO supermarche(nom, domaine, recherche, code, espace)
+INSERT INTO comparateur.supermarche(nom, domaine, recherche, code, espace)
 VALUES("auchan", "https://www.auchan.fr/", "recherche?text=", "ca-n0701", "+");
