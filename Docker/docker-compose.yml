@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  db:
+    container_name: MySQL_Server
+    build:
+      context: .
+      dockerfile: Docker_db/Dockerfile
+    ports:
+      - "3306:3306"
+
+  apache:
+    container_name: Apache_Server
+    build:
+      context: .
+      dockerfile: Docker_apache/Dockerfile
+    ports:
+      - "80:80"
