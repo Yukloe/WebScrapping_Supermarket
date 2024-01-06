@@ -7,6 +7,7 @@ services:
     build:
       context: .
       dockerfile: Docker_db/Dockerfile
+    command: --local-infile=1 --secure-file-priv=''
     ports:
       - "3306:3306"
 

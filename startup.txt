@@ -1,4 +1,4 @@
-Utiliser la commande : docker compose -f Docker/docker-compose_db.yml up --build
+Utiliser la commande : docker-compose -f .\Docker\docker-compose.yml up --build
 
 à partir de là, les dockers seront bien créés et tourneront.
 
