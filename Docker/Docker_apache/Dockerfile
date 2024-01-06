@@ -14,6 +14,6 @@ EXPOSE 80
 
 RUN rm /var/www/html/index.html
 
-COPY ./Docker_apache/html/index.php /var/www/html/index.php
+ADD ./Docker_apache/html /var/www/html
 
 ENTRYPOINT [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
