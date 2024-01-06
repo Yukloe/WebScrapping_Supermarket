@@ -2,14 +2,42 @@ import Collector
 import mysql.connector
 
 if __name__ == "__main__":
-    print("GO")
 
     mydb = mysql.connector.connect(
-        host="localhost:3306",
+        host="localhost",
         user="root",
         password="root"
     )
-    
-    #Collector.Collect(1,"https://www.intermarche.com/", "recherche/", "%20","/html/body/div[3]/div[1]/main/div/div[2]/div[2]/div[2]/div", [], "")
-    Collector.Collect(2,"https://www.carrefour.fr/", "s?q=", "+", "/html/body/main/div/div[3]/section/div/div[2]/ul", [[1,"St Moret", 400]], "")
-    Collector.Collect(3,"https://www.auchan.fr/", "recherche?text=", "+", "/html/body/div[3]/div[2]/div[2]/div[4]", [[1,"St Moret", 400]], "")
+
+    cursor = mydb.cursor()
+
+    cursor.execute("SELECT * FROM comparateur.supermarche")
+
+    Supermarket = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM comparateur.liste_article")
+
+    ListeArticle = cursor.fetchall()
+
+    print(Supermarket)
+    print(ListeArticle)
+
+    for x in Supermarket:
+
+        result = ""
+
+        try :
+            result = Collector.Collect(x[0], x[2], x[3], x[4], x[5], ListeArticle)
+
+            for article in result :
+                cursor.execute(f"""
+                                    INSERT INTO comparateur.article(id_supermarche, id_liste, prixKg, prixUnit, lien, photo)
+                                    VALUES("{article[0]}", "{article[1]}", "{article[2]}", "{article[3]}", "{article[4]}", "{article[5]}")
+                                """)
+                
+                mydb.commit()
+
+                print(cursor.rowcount, " record inserted.")
+        
+        except :
+            print("OOPS")

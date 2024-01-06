@@ -5,6 +5,7 @@ def getInfo(htmlCode, articleWeight):
 
     listArticle = htmlCode.split("<li")
     returnValue = []
+
     for i in range(len(listArticle)):
         soup = BeautifulSoup("<li"+listArticle[i], "html.parser")
 
@@ -16,7 +17,7 @@ def getInfo(htmlCode, articleWeight):
             except AttributeError :
                 weight = "NULL"
 
-        if str(articleWeight) in weight :
+        if str(int(articleWeight)) in weight :
 
             weight = articleWeight
 
@@ -62,6 +63,6 @@ def getInfo(htmlCode, articleWeight):
             except AttributeError :
                 image = "NULL"
 
-            returnValue = [price, priceUnit, href, image]
+            returnValue.append([price, priceUnit, href, image])
 
     return returnValue

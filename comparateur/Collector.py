@@ -28,7 +28,10 @@ def Collect(idMagasin, URL, Recherche, espace, Xpath, listArticle, code = ""):
         driver.find_element(By.XPATH, '//a[contains(text(), "Trouver un magasin")]').click()
     except ElementClickInterceptedException:
         try :
-            driver.find_element(By.XPATH, '/html/body/div[7]/div[1]/div[3]/div[2]/button/i').click()
+            try :
+                driver.find_element(By.XPATH, '/html/body/div[7]/div[1]/div[3]/div[2]/button/i').click()
+            except :
+                print("No band")
             driver.find_element(By.XPATH, '//a[contains(text(), "Trouver un magasin")]').click()
         except ElementClickInterceptedException :
             try :
@@ -66,14 +69,19 @@ def Collect(idMagasin, URL, Recherche, espace, Xpath, listArticle, code = ""):
     listResult = []
 
     for Article in listArticle:
+
+        print(Article)
+
         Search = URL + Recherche + espace.join(Article[1].split())
         driver.get(Search)
 
         time.sleep(5)
         ResultElement = driver.find_element(By.XPATH, Xpath)
 
-        temp = Treatment.getInfo(ResultElement.get_attribute("innerHTML"), Article[2])
-        if len(temp) >= 4 :
-            listResult.append([idMagasin, Article[0], temp[0], temp[1], URL + temp[2][1:], temp[3]])
+        tmp = Treatment.getInfo(ResultElement.get_attribute("innerHTML"), Article[2])
+        
+        for temp in tmp :
+            if len(temp) >= 4 :
+                listResult.append([idMagasin, Article[0], temp[0], temp[1], URL + temp[2][1:], temp[3]])
 
-    print(listResult)
+    return listResult
