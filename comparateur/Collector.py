@@ -76,12 +76,16 @@ def Collect(idMagasin, URL, Recherche, espace, Xpath, listArticle, code = ""):
         driver.get(Search)
 
         time.sleep(5)
-        ResultElement = driver.find_element(By.XPATH, Xpath)
 
-        tmp = Treatment.getInfo(ResultElement.get_attribute("innerHTML"), Article[2])
+        try : 
+            ResultElement = driver.find_element(By.XPATH, Xpath)
+            tmp = Treatment.getInfo(ResultElement.get_attribute("innerHTML"), Article[2])
         
-        for temp in tmp :
-            if len(temp) >= 4 :
-                listResult.append([idMagasin, Article[0], temp[0], temp[1], URL + temp[2][1:], temp[3]])
+            for temp in tmp :
+                if len(temp) >= 4 :
+                    listResult.append([idMagasin, Article[0], temp[0], temp[1], URL + temp[2][1:], temp[3]])
+        
+        except :
+            print("List not found")
 
     return listResult
