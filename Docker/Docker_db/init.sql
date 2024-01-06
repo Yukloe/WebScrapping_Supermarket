@@ -34,5 +34,13 @@ VALUES("intermarche", "https://www.intermarche.com/", "recherche/", "%20","/html
 ("carrefour", "https://www.carrefour.fr/", "s?q=", "+", "/html/body/main/div/div[3]/section/div/div[2]/ul"),
 ("auchan", "https://www.auchan.fr/", "recherche?text=", "+", "/html/body/div[3]/div[2]/div[2]/div[4]");
 
-INSERT INTO comparateur.liste_article(nom, poids)
-VALUES("St Moret", 400), ("Camembert President", 250), ("Camembert President", 145);
+-- INSERT INTO comparateur.liste_article(nom, poids)
+-- VALUES("St Moret", 400), ("Camembert President", 250), ("Camembert President", 145);
+
+-- Chargement des données du CSV
+LOAD DATA INFILE '/docker-entrypoint-initdb.d/list_product.csv'
+INTO TABLE liste_article
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(nom, poids);
