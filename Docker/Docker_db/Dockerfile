@@ -1,6 +1,6 @@
 #Image MySQL
 
-FROM mysql:latest
+FROM mysql:5.7.43
 
 ENV MYSQL_ROOT_PASSWORD=root
 

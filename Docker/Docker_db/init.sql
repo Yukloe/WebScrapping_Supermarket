@@ -13,7 +13,7 @@ CREATE TABLE supermarche (
 CREATE TABLE liste_article (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255),
-    poids FLOAT
+    poids INT
 );
 
 CREATE TABLE article (
