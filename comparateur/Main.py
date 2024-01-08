@@ -3,11 +3,17 @@ import mysql.connector
 
 if __name__ == "__main__":
 
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root"
-    )
+    connected = False
+    while connected != True :
+        try :
+            mydb = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                password="root"
+            )
+            connected = True
+        except :
+            print("Connection Failed to DB")
 
     cursor = mydb.cursor()
 
@@ -18,9 +24,6 @@ if __name__ == "__main__":
     cursor.execute("SELECT * FROM comparateur.liste_article")
 
     ListeArticle = cursor.fetchall()
-
-    print(Supermarket)
-    print(ListeArticle)
 
     for x in Supermarket:
 
